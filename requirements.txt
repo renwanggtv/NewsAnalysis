@@ -1,0 +1,56 @@
+# Web Framework
+Flask==2.3.2
+
+# API Rate Limiting
+Flask-Limiter==3.3.1
+
+# WSGI HTTP Server
+gunicorn==20.1.0
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# HTTP Requests
+requests==2.31.0
+
+# Data Processing
+numpy
+pandas
+
+# AI/ML Libraries
+openai
+anthropic
+
+# Natural Language Processing
+nltk
+
+# Data Visualization (if needed on the server side)
+matplotlib
+
+# Database (if you decide to use one)
+SQLAlchemy
+
+# Caching
+Flask-Caching
+
+# Testing
+pytest
+
+# Code Linting and Formatting
+flake8
+black
+
+# Logging (if you need advanced logging features)
+loguru
+
+# Security
+Flask-Talisman
+
+# Async Support (if needed)
+aiohttp
+
+# Time Zone Handling
+pytz
+
+# Progress Bar (if needed in scripts)
+tqdm

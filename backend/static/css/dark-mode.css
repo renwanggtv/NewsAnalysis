@@ -1,0 +1,76 @@
+/* dark-mode.css */
+
+body.dark-mode {
+    --primary-color: #2980b9;
+    --secondary-color: #27ae60;
+    --background-color: #2c3e50;
+    --text-color: #ecf0f1;
+    --border-color: #34495e;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode header {
+    background-color: #34495e;
+}
+
+body.dark-mode button {
+    background-color: var(--primary-color);
+}
+
+body.dark-mode button:hover {
+    background-color: #3498db;
+}
+
+body.dark-mode #progressBarContainer {
+    background-color: #445566;
+}
+
+body.dark-mode #visualization {
+    border-color: var(--border-color);
+}
+
+body.dark-mode .notification.info {
+    background-color: #3498db;
+}
+
+body.dark-mode .notification.success {
+    background-color: #2ecc71;
+}
+
+body.dark-mode .notification.error {
+    background-color: #e74c3c;
+}
+
+body.dark-mode .modal {
+    background-color: #34495e;
+    color: var(--text-color);
+}
+
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode input {
+    background-color: #445566;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+body.dark-mode select option {
+    background-color: #34495e;
+}
+
+/* 适配深色模式下的 D3.js 图表 */
+body.dark-mode #visualization svg {
+    background-color: #2c3e50;
+}
+
+body.dark-mode #visualization .links line {
+    stroke: #95a5a6;
+}
+
+body.dark-mode #visualization .nodes circle {
+    stroke: #95a5a6;
+}
+
+body.dark-mode #visualization .nodes text {
+    fill: #ecf0f1;
+}

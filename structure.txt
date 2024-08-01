@@ -1,0 +1,37 @@
+news_economic_impact_analyzer/
+│
+├── backend/
+│   ├── app.py
+│   ├── config.py
+│   ├── models/
+│   │   └── news_analyzer.py
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── main_routes.py
+│   │   └── api_routes.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── cache_service.py
+│   │   └── model_service.py
+│   └── utils/
+│       ├── __init__.py
+│       └── helpers.py
+│
+├── frontend/
+│   ├── index.html
+│   ├── css/
+│   │   ├── main.css
+│   │   └── dark-mode.css
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── visualization.js
+│   │   ├── ui_controls.js
+│   │   └── api_client.js
+│   └── assets/
+│       └── logo.png
+│
+├── prompts/
+│   ├── initial_prompt.txt
+│   └── detailed_prompt.txt
+│
+└── requirements.txt
