@@ -7,8 +7,18 @@ from services import init_app as init_services
 import subprocess
 import json
 from flask import jsonify
+import logging
+import sys
 
-
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler('/var/log/news_analyzer.log')
+    ]
+)
+logger = logging.getLogger(__name__)
 app = Flask(__name__,
             template_folder='templates',
             static_folder='static',
