@@ -1,6 +1,6 @@
 import json
 import logging
-from backend.services.model_service import run_local_model, run_openai, run_claude, run_other_api
+from services.model_service import run_local_model, run_openai, run_claude, run_other_api
 import subprocess
 import re
 from flask import Flask, render_template, request, jsonify
@@ -21,7 +21,7 @@ class NewsAnalyzer:
         try:
 
             prompt = self.initial_prompt.format(news_content=news_content)
-
+            logging.info(f"Analyzing news with prompt: {prompt}")
             logging.error(f"prompt: {prompt}")
             if model_source == 'local':
                 result = run_local_model(prompt, local_model)
@@ -33,10 +33,14 @@ class NewsAnalyzer:
                 result = run_other_api(prompt, api_key)
             else:
                 raise ValueError(f"Unsupported model source: {model_source}")
-
+            logging.info(f"Raw result from model: {result}")
             logging.error(f"result: {result}")
             cleaned_json = self.clean_json(result)
+            logging.info(f"Cleaned JSON: {cleaned_json}")
             return json.loads(cleaned_json)
+        except json.JSONDecodeError as e:
+            logging.error(f"JSON decode error: {e}")
+            return {"error": f"Invalid JSON format: {str(e)}"}
         except Exception as e:
             logging.error(f"Error during analysis: {e}")
             return {"error": f"Error during analysis: {str(e)}"}
@@ -54,6 +58,7 @@ class NewsAnalyzer:
         except Exception as e:
             raise RuntimeError(f"Unexpected error when getting local models: {str(e)}")
     def clean_json(self, json_str):
+        logging.info(f"Cleaning JSON string: {json_str}")
         # 找到JSON对象的开始和结束
         start = json_str.find('{')
         end = json_str.rfind('}') + 1
@@ -67,6 +72,7 @@ class NewsAnalyzer:
         json_str = re.sub(r',\s*}', '}', json_str)  # 移除对象末尾多余的逗号
         json_str = re.sub(r',\s*]', ']', json_str)  # 移除数组末尾多余的逗号
 
+        logging.info(f"Cleaned JSON string: {json_str}")
         return json_str
 
     def get_detailed_description(self, area_name, news_content, model_source, api_key=None, local_model=None):

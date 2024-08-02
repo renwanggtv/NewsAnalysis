@@ -1,9 +1,9 @@
 from flask import request, jsonify
-from backend.services.cache_service import cache_result, get_cached_result
+from services.cache_service import cache_result, get_cached_result
 import logging
 import subprocess
 from . import api_bp
-from backend.models.news_analyzer import NewsAnalyzer
+from models.news_analyzer import NewsAnalyzer
 
 analyzer = NewsAnalyzer()
 
@@ -16,9 +16,12 @@ def analyze():
         api_key = data.get('apiKey')
         local_model = data.get('localModel')
 
+        logging.info(f"Received analysis request: {data}")
         analysis_result = analyzer.analyze_news(news_content, model_source, api_key, local_model)
+        logging.info(f"Analysis result: {analysis_result}")
         return jsonify(analysis_result)
     except Exception as e:
+        logging.error(f"Error in /analyze route: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
 @api_bp.route('/get_detailed_description', methods=['POST'])
