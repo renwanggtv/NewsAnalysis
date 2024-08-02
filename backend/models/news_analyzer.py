@@ -1,6 +1,6 @@
 import json
 import logging
-from services.model_service import run_local_model, run_openai, run_claude, run_other_api
+from ..services.model_service import run_local_model, run_openai, run_claude, run_other_api
 import subprocess
 import re
 from flask import Flask, render_template, request, jsonify

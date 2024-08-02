@@ -1,9 +1,9 @@
 from flask import request, jsonify
-from services.cache_service import cache_result, get_cached_result
+from ..services.cache_service import cache_result, get_cached_result
 import logging
 import subprocess
 from . import api_bp
-from models.news_analyzer import NewsAnalyzer
+from ..models.news_analyzer import NewsAnalyzer
 
 analyzer = NewsAnalyzer()
 
