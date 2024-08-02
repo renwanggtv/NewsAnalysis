@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from config import Config
-from routes import init_app as init_routes
-from services import init_app as init_services
+from backend.config import Config
+from backend.routes import init_app as init_routes
+from backend.services import init_app as init_services
 import subprocess
 import json
 from flask import jsonify
